@@ -22,77 +22,52 @@
   </head>
   
   <body>
-    <!-- Name -->
+    
     <form>
-    <div class="row g-3">
-      <div class="col-md-6">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" >
+      <div class="row g-3 mb-3">
+        <!-- Name -->
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" >
+        </div>
+
+        <!-- Last Name -->
+        <div class="col-md-6">
+          <label for="last-name" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="last-name" name="last-name">
+        </div>
       </div>
 
-      <!-- Last Name -->
-      <div class="col-md-6">
-        <label for="last-name" class="form-label">Last Name</label>
-        <input type="text" class="form-control" id="last-name" name="last-name">
-      </div>
-
-      <!-- Adress -->
-      <!-- <div class="col-12">
-        <label for="inputAddress" class="form-label">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-      </div>
-      <div class="col-12">
-        <label for="inputAddress2" class="form-label">Address 2</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-      </div>
-      <div class="col-md-6">
-        <label for="inputCity" class="form-label">City</label>
-        <input type="text" class="form-control" id="inputCity">
-      </div>
-      <div class="col-md-4">
-        <label for="inputState" class="form-label">State</label>
-        <select id="inputState" class="form-select">
-          <option selected>Choose...</option>
-          <option>...</option>
+        <!-- Drink select -->
+        <select class="form-select" aria-label="Default select example">
+          <option selected>-Select a drink-</option>
+          <option value="1">Espresso</option>
+          <option value="2">Latte</option>
+          <option value="3">Mocha</option>
+          <option value="4">Cappuccino</option>
+          <option value="5">Flat White</option>
         </select>
-      </div>
-      <div class="col-md-2">
-        <label for="inputZip" class="form-label">Zip</label>
-        <input type="text" class="form-control" id="inputZip">
-      </div> -->
 
-      <!-- Drink select -->
-      <select class="form-select" aria-label="Default select example">
-        <option selected>-Select a drink-</option>
-        <option value="1">Espresso</option>
-        <option value="2">Latte</option>
-        <option value="3">Mocha</option>
-        <option value="4">Cappuccino</option>
-        <option value="5">Flat White</option>
-      </select>
+        <!-- Drink Size -->
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+          <label class="form-check-label" for="inlineRadio1">8oz</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+          <label class="form-check-label" for="inlineRadio2">12 oz.</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+          <label class="form-check-label" for="inlineRadio3">16oz.</label>
+        </div>
 
-      <!-- Drink Size -->
-      <div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-        <label class="form-check-label" for="inlineRadio1">8oz</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-        <label class="form-check-label" for="inlineRadio2">12 oz.</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-        <label class="form-check-label" for="inlineRadio3">16oz.</label>
-      </div>
-      </div>
-
-      <!-- Submit button -->
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- Submit button -->
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
       </div>
     </form>
-
   </body>
 </html>
 
