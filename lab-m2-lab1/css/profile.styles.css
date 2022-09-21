@@ -1,3 +1,11 @@
+/*
+// File name: profile.styles.css
+// File date: 9/21/22
+// Programmer: Manuel Sandoz Santiago
+// Description: <<missing>>
+*/
+
 #review {
   height: 200px;
+  resize: none;
 }
