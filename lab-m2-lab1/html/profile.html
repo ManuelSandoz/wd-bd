@@ -26,14 +26,17 @@
     <!-- Local CSS import -->
     <link rel="stylesheet" href="../css/profile.styles.css">
 
+    <!-- Local JS import -->
+    <script src="../javascript/profile.functions.js"></script>
+
   </head>
   
   <body>
     <header>
-      <nav class="navbar fixed-top navbar-dark bg-secondary mb-3">
+      <nav class="navbar fixed-sticky navbar-dark bg-secondary mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand justify-content-between" href="#">
-              <i class="bi bi-cup-hot-fill me-3"></i>
+            <a class="navbar-brand" href="#">
+              <img class="me-2" src="../images/maker-happy-cup.gif" alt="animated coffe cup with hot coffee" width="35">
               Brew Review
             </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,13 +48,10 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
+                <a class="nav-link" href="#">Lists</a>
               </li>
             </ul>
           </div>
@@ -63,7 +63,7 @@
       <div class="row g-3 mb-3">
         <!-- Name -->
         <div class="col-md-6">
-          <div class="col-md-6 input-group">
+          <div class="input-group">
             <span class="input-group-text" id="user-icon">
               <i class="bi bi-people-fill"></i>
             </span>
@@ -187,15 +187,47 @@
           <label class="form-check-label" for="exampleCheck1">I agree with the terms and conditions</label>
         </div>
 
-        <!-- Submit button -->
+        <!-- Buttons -->
         <div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-outline-primary" title="placeholder">Primary</button>
+          <button type="button" class="btn btn-outline-secondary" title="placeholder">Secondary</button>
+          <button type="button" class="btn btn-outline-success" title="placeholder">Success</button>
+          <button type="button" class="btn btn-outline-danger" title="placeholder">Danger</button>
+          <button type="button" class="btn btn-outline-warning" title="placeholder">Warning</button>
+          <button type="button" class="btn btn-outline-info" title="placeholder">Info</button>
+          <button type="button" class="btn btn-outline-light" title="placeholder">Light</button>
+          <button type="button" class="btn btn-outline-dark" title="placeholder">Dark</button>
         </div>
       </div>
     </form>
 
-    <footer>
-      <pre>here goes the footer</pre>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+          <i class="bi bi-cup-hot-fill mx-2"></i>
+        </a>
+        <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+      </div>
+  
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3">
+          <a class="text-muted" href="#">
+            <i class="bi bi-twitter"></i>
+          </a>
+        </li>
+
+        <li class="ms-3">
+          <a class="text-muted" href="#">
+            <i class="bi bi-instagram"></i>
+          </a>
+        </li>
+
+        <li class="mx-3">
+          <a class="text-muted" href="#">
+            <i class="bi bi-facebook"></i>
+          </a>
+        </li>
+      </ul>
     </footer>
   </body>
 </html>
