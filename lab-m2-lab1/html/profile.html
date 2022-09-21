@@ -96,6 +96,20 @@
           <label class="floatingInput" for="review-date">Date of visit</label>
         </div>
 
+        <!-- Upload Picture -->
+        <div class="card w-50" style="width: 18rem;">
+          <!-- The idea here is to have the images selected by the user show up (this is out of scope atm) -->
+          <img src="..." class="card-img-top" alt="Coffee Cup">
+          <div class="card-body">
+            <h5 class="card-title">Add a picture</h5>
+            <p class="card-text">Add a picture of your coffee to your review</p>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Add a picture</label>
+              <input class="form-control" type="file" id="formFile" multiple accept="image/*">
+            </div>
+          </div>
+        </div>
+
         <!-- Liscence agreement check -->
         <div class="mb-1 ms-2 form-check">
           <input type="checkbox" class="form-check-input" id="liscence-agreement" name="liscence-agreement" required>
