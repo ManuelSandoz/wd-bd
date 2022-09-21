@@ -17,6 +17,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
     <!-- JavaScript Bundle with Popper for Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
@@ -33,35 +36,60 @@
     <form id="coffee-review" name="coffee-review" autocomplete="on">
       <div class="row g-3 mb-3">
         <!-- Name -->
-        <div class="form-floating col-md-6">
-          <input type="text" class="form-control" id="name" name="name" placeholder="John" >
-          <label for="name" class="form-label">Name</label>
+        <div class="col-md-6">
+          <div class="col-md-6 input-group">
+            <span class="input-group-text" id="user-icon">
+              <i class="bi bi-people-fill"></i>
+            </span>
+            <div class="form-floating">
+              <input type="text" class="form-control" id="name" name="name" placeholder="John" >
+              <label for="name" class="form-label">Name</label>
+            </div>
+          </div>
         </div>
 
         <!-- Last Name -->
-        <div class="form-floating col-md-6">
-          <input type="text" class="form-control" id="last-name" name="last-name" placeholder="Smith">
-          <label for="last-name" class="form-label">Last Name</label>
+        <div class="col-md-6">
+          <div class="input-group col-md-6">
+            <span class="input-group-text">
+              <i class="bi bi-people-fill"></i>
+            </span>
+            <div class="form-floating">
+              <input type="text" class="form-control" id="last-name" name="last-name" placeholder="Smith">
+              <label for="last-name" class="form-label">Last Name</label>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+      <!-- Email -->
+      <div class="input-group mb-3">
+        <span class="input-group-text">
+          <i class="bi bi-envelope-fill"></i>
+        </span>
+        <div class="form-floating">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+        </div>
       </div>
 
       <div class="row g-3">
         <!-- Drink select -->
-        <div class="form-floating col-md-6">
-          <select class="form-select" id="drinkSelect" name="drinkSelect" aria-label="Drink select">
-            <option selected>- Open to choose a drink -</option>
-            <option value="1">Espresso</option>
-            <option value="2">Latte</option>
-            <option value="3">Mocha</option>
-            <option value="4">Cappuccino</option>
-            <option value="5">Flat White</option>
-          </select>
-          <label for="drinkSelect">Select a drink</label>
+        <div class="input-group col-md-6">
+          <span class="input-group-text">
+            <i class="bi bi-list-task"></i>
+          </span>
+          <div class="form-floating">
+            <select class="form-select" id="drinkSelect" name="drinkSelect" aria-label="Drink select">
+              <option selected>- Open to choose a drink -</option>
+              <option value="1">Espresso</option>
+              <option value="2">Latte</option>
+              <option value="3">Mocha</option>
+              <option value="4">Cappuccino</option>
+              <option value="5">Flat White</option>
+            </select>
+            <label for="drinkSelect">Select a drink</label>
+          </div>
         </div>
 
         <!-- Drink Size -->
@@ -91,20 +119,23 @@
         </div>
 
         <!-- Datetime -->
-        <div class="form-floating mb-3">
-          <input class="form-control" type="datetime-local" name="review-date" id="review-date">
-          <label class="floatingInput" for="review-date">Date of visit</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text">
+            <i class="bi bi-calendar-fill"></i>
+          </span>
+          <div class="form-floating">
+            <input class="form-control" type="datetime-local" name="review-date" id="review-date">
+            <label class="floatingInput" for="review-date">Date of visit</label>
+          </div>
         </div>
 
         <!-- Upload Picture -->
         <div class="card w-50" style="width: 18rem;">
           <!-- The idea here is to have the images selected by the user show up (this is out of scope atm) -->
-          <img src="..." class="card-img-top" alt="Coffee Cup">
+          <img src="../images/coffee-cup.png" class="card-img-top" alt="Coffee Cup">
           <div class="card-body">
-            <h5 class="card-title">Add a picture</h5>
-            <p class="card-text">Add a picture of your coffee to your review</p>
             <div class="mb-3">
-              <label for="formFile" class="form-label">Add a picture</label>
+              <label for="formFile" class="form-label h5">Add a picture to your review</label>
               <input class="form-control" type="file" id="formFile" multiple accept="image/*">
             </div>
           </div>
@@ -128,14 +159,3 @@
     </footer>
   </body>
 </html>
-
-<!-- Ideas: 
-  coffee review 
-  * user puts a photo (optional) of the coffee
-  * his name or the name or (username?)
-  * email (counts as validation)
-  * actual review (text area)
-  * radio button -> size of the drink in oz
-  * 
-
--->
