@@ -34,7 +34,7 @@
   <body>
   <!-- Top nav bar -->
     <header>
-      <nav class="navbar fixed-sticky navbar-dark bg-secondary mb-3">
+      <nav class="navbar navbar-dark bg-secondary mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
               <img class="me-2" src="../images/maker-happy-cup.gif" alt="animated coffe cup with hot coffee" width="35">
@@ -208,37 +208,40 @@
           </div>
 
           <!-- Liscence agreement check -->
-          <div class="mb-3 ms-2 form-check">
+          <div class="mb-3 ms-3 form-check">
             <input type="checkbox" class="form-check-input" id="liscence-agreement" name="liscence-agreement" required>
             <label class="form-check-label" for="exampleCheck1">I agree with the terms and conditions</label>
           </div>
 
           <!-- Buttons -->
-          <div class="container mb-3">
-            <button type="button" class="btn btn-outline-info" data-bs-toggle="tooltip"
-            data-bs-title="Validate the provided data">
-              <i class="bi bi-shield-fill-exclamation"></i>
-              Validate
-            </button>
+          <div class="container mb-3 row col-xl-12">
+            <div class="col-xl-6 mb-3 d-flex justify-content-between">
+              <button type="button" class="btn btn-outline-info" data-bs-toggle="tooltip"
+              data-bs-title="Validate the provided data">
+                <i class="bi bi-shield-fill-exclamation"></i>
+                Validate
+              </button>
 
-            <button type="button" class="btn btn-outline-primary"  data-bs-toggle="tooltip"
-            data-bs-title="Submit your review">
-              <i class="bi bi-upload"></i>
-              Submit
-            </button>
-            
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="tooltip"
-            data-bs-title="Clear the information">
-              <i class="bi bi-eraser-fill"></i>
-              Clear
-            </button>
+              <button type="button" class="btn btn-outline-primary"  data-bs-toggle="tooltip"
+              data-bs-title="Submit your review">
+                <i class="bi bi-upload"></i>
+                Submit
+              </button>
+              
+              <button type="button" class="btn btn-outline-warning" data-bs-toggle="tooltip"
+              data-bs-title="Clear the information">
+                <i class="bi bi-eraser-fill"></i>
+                Clear
+              </button>
 
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="tooltip"
-            data-bs-title="Delete the review">
-              <i class="bi bi-trash-fill"></i>
-              Delete
-            </button>
+              <button type="button" class="btn btn-outline-danger" data-bs-toggle="tooltip"
+              data-bs-title="Delete the review">
+                <i class="bi bi-trash-fill"></i>
+                Delete
+              </button>
+          </div>
             
+          <div class="col-xl-6 mb-3 d-flex justify-content-between">
             <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip"
             data-bs-title="Search a for a previous review">
               <i class="bi bi-search"></i>
@@ -262,6 +265,7 @@
               <i class="bi bi-plus-square-fill"></i>  
               Add Review
             </button>
+          </div>
           </div>
       </form>
     </fieldset>
