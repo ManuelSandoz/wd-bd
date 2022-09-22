@@ -13,3 +13,15 @@
 .file-upload__container {
   width: 18rem;
 }
+
+picture {
+  align-self: center;
+}
+
+.review-img {
+  display: block;
+  max-height: 600px;
+  max-width: 247px;
+  width: auto;
+  height: auto;
+}
