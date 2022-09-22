@@ -187,14 +187,19 @@
         </div>
 
         <!-- Upload Picture -->
-        <div class="card w-75 mb-3 file-upload__container">
+        <div class="card w-50 mb-3 file-upload__container pt-1">
           <!-- The idea here is to have the images selected by the user show up (this is out of scope atm) -->
-          <img src="../images/coffee-cup.png" class="card-img-top" alt="Coffee Cup">
+          <picture class="border rounded">
+            <source id="review-img" class="card-img-top w-100 review-img">
+
+            <img src="../images/upload-placeholder.png" class="card-img-top w-100 review-img" alt="Coffee Cup" id="review-img" >
+          </picture>
+
           <div class="card-body">
             <div class="mb-3">
               <label for="formFile" class="form-label h5">Add a picture to your review</label>
               <input class="form-control" type="file" id="formFile" multiple accept="image/*" data-bs-toggle="tooltip"
-              data-bs-title="Upload a picture of your drink">
+              data-bs-title="Upload a picture of your drink" onchange="loadImg(event)">
             </div>
           </div>
         </div>
@@ -255,7 +260,6 @@
             Add Review
           </button>
         </div>
-      </BOOMSHAKALAKAv>
     </form>
 
     <!-- Footer -->
