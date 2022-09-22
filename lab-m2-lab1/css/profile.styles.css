@@ -16,12 +16,13 @@
 
 picture {
   align-self: center;
-}
-
-.review-img {
   display: block;
   max-height: 600px;
   max-width: 247px;
   width: auto;
   height: auto;
+}
+
+.review-img {
+  min-height: 330px;
 }
