@@ -13,6 +13,6 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 
 // This function is used to display the uploaded picture of the user
 var loadImg = function (event) {
-  var image = document.getElementById('review-img');
+  var image = document.getElementById('f-review-img');
   image.srcset = URL.createObjectURL(event.target.files[0]);
 }

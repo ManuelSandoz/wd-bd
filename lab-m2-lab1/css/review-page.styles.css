@@ -5,7 +5,7 @@
 // Description: <<missing>>
 */
 
-#f-review-img {
+#f-review {
   height: 150px;
   resize: none;
 }
@@ -26,4 +26,16 @@ picture {
 
 .review-img {
   min-height: 330px;
+}
+
+header {
+  background-color: #A8BDB2;
+}
+
+span.custom-input-txt-clr {
+  background-color: #A8BDB2;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #A8BDB2;
 }
