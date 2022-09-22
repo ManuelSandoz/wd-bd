@@ -9,3 +9,7 @@
   height: 150px;
   resize: none;
 }
+
+.file-upload__container {
+  width: 18rem;
+}
