@@ -2,7 +2,7 @@
 // File name: review-page.fucntions.js
 // File date: 9/21/22
 // Programmer: Manuel Sandoz Santiago
-// Description: This file contains the functions  to be used on the coffee review page.
+// Description: This file contains the functions to be used on the coffee review page.
 */
 
 "use strict";
