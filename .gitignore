@@ -5,6 +5,7 @@
 # Report Files
 /COMP-3015-M2-LAB1-Manuel-Sandoz/COMP-3015-M2-LAB-1-Manuel-Sandoz.docx.pdf
 
+.DS_Store
 
 # Lets see if this works
 *.gif
