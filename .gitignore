@@ -1,0 +1,13 @@
+# Images Folders
+/COMP-3015-M2-LAB1-Manuel-Sandoz/images/
+/lab-m2-lab2/images/
+
+# Report Files
+/COMP-3015-M2-LAB1-Manuel-Sandoz/COMP-3015-M2-LAB-1-Manuel-Sandoz.docx.pdf
+
+
+# Lets see if this works
+*.gif
+*.png
+*.pdf
+*.zip
