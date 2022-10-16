@@ -3,6 +3,7 @@
 // File date: 9/21/22
 // Programmer: Manuel Sandoz Santiago
 // Description: This file contains the functions to be used on the coffee review page.
+// Update date: 10/16/22
 */
 
 "use strict"
@@ -43,21 +44,29 @@ function validateEmail() {
 
   if (!regex.test(email.value)) {
     alert('Please enter a valid email address');
+
+    return false;
   }
+  return true;
 }
 
-// This function will make sure all requred inputs are filled
+// Function validates that the name and lastname inputs are filled
 function validateFullName() {
   var name = document.getElementById('f-name');
   var lastName = document.getElementById('f-last-name');
 
   if(name.value === '') {
     alert('Please enter a valid name and try agian')
+
+    return false;
   }
 
   if(lastName.value === '') {
     alert('Please enter a valid last name and try again')
+
+    return false;
   }
+  return true;
 }
 
 // Function that validates if a drink has been selected
@@ -66,7 +75,10 @@ function validateDrink() {
 
   if(selectedDrink.value === '') {
     alert('Please choose a drink to review and try again')
+
+    return false;
   }
+  return true;
 }
 
 // Validate if a drink size has been chosen
@@ -83,7 +95,10 @@ function validateDrinkSize() {
   // If there are no checked elements activate the alert
   if (!flag) {
     alert('Please select a drink size and try again')
+
+    return false;
   }
+  return true;
 }
 
 // Validates if there is text in the review text area
@@ -92,35 +107,60 @@ function validateReview() {
 
   if (reviewText.value === '') {
     alert('Plase enter your review and try again');
+
+    return false;
   }
+  return true;
 }
 
+// Validate if the term and conditions are checked
 function validateAgreement() {
   var agreement = document.getElementById('f-legal-agree');
   
   if(!agreement.checked){
     alert('You must agree to the terms and conditions in order to continue')
+
+    return false;
   }
+  return true;
 }
 
 // This function will validate through the inputs on the form
 function validateForm() {
+
+  var validationSuccess = true;
   
   // Validating if name and last name field are not empty
-  validateFullName();
+  if (!validateFullName()) {
+    validationSuccess = false;
+  }
 
   //validate
-  validateEmail()
+  if (!validateEmail()) {
+    validationSuccess = false;
+  }
 
   // Validating if a drink has been selected
-  validateDrink();
+  if (!validateDrink()) {
+    validationSuccess = false;
+  }
 
   // Validating the drink size selections
-  validateDrinkSize();
+  if (!validateDrinkSize()) {
+    validationSuccess = false;
+  }
 
   // Validate if there is a review text
-  validateReview();
+  if (!validateReview()) {
+    validationSuccess = false;
+  }
 
   // Validate if the agreement has been checkeda
-  validateAgreement();
+  if (!validateAgreement()) {
+    validationSuccess = false;
+  }
+
+  if (validationSuccess) {
+    alert('Validation successful');
+  }
 }
