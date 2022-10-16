@@ -5,12 +5,7 @@
 // Description: This file contains the functions to be used on the coffee review page.
 */
 
-"use strict";
-
-//THINGS TO DO FOR LAB
-// Javascript Form Validation (Input Type Validation Functions)
-// Javascript RegExp (Regular Expressions)
-// HTML Web Storage API (LocalStorage)
+"use strict"
 
 // Code to activate the tooltips
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
@@ -43,15 +38,89 @@ function saveChanges() {
 
 // This function will use regex to validate the email input
 function validateEmail() {
-  var regex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/
+  var regex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   var email = document.getElementById('f-email');
 
-  return regex.test(email.value);
+  if (!regex.test(email.value)) {
+    alert('Please enter a valid email address');
+  }
+}
+
+// This function will make sure all requred inputs are filled
+function validateFullName() {
+  var name = document.getElementById('f-name');
+  var lastName = document.getElementById('f-last-name');
+
+  if(name.value === '') {
+    alert('Please enter a valid name and try agian')
+  }
+
+  if(lastName.value === '') {
+    alert('Please enter a valid last name and try again')
+  }
+}
+
+// Function that validates if a drink has been selected
+function validateDrink() {
+  var selectedDrink = document.querySelector('select option:checked');
+
+  if(selectedDrink.value === '') {
+    alert('Please choose a drink to review and try again')
+  }
+}
+
+// Validate if a drink size has been chosen
+function validateDrinkSize() {
+  var drinkSize = document.getElementsByName('f-size-option');
+  var flag = false;
+
+  drinkSize.forEach(drink => {
+    if (drink.checked) {
+      flag = true;
+    }
+  })
+
+  // If there are no checked elements activate the alert
+  if (!flag) {
+    alert('Please select a drink size and try again')
+  }
+}
+
+// Validates if there is text in the review text area
+function validateReview() {
+  var reviewText = document.getElementById('f-review');
+
+  if (reviewText.value === '') {
+    alert('Plase enter your review and try again');
+  }
+}
+
+function validateAgreement() {
+  var agreement = document.getElementById('f-legal-agree');
+  
+  if(!agreement.checked){
+    alert('You must agree to the terms and conditions in order to continue')
+  }
 }
 
 // This function will validate through the inputs on the form
 function validateForm() {
-  if (!validateEmail()) {
-    alert('Please enter a valid email address')
-  }
+  
+  // Validating if name and last name field are not empty
+  validateFullName();
+
+  //validate
+  validateEmail()
+
+  // Validating if a drink has been selected
+  validateDrink();
+
+  // Validating the drink size selections
+  validateDrinkSize();
+
+  // Validate if there is a review text
+  validateReview();
+
+  // Validate if the agreement has been checkeda
+  validateAgreement();
 }
