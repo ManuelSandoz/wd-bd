@@ -4,6 +4,7 @@
 // Programmer: Manuel Sandoz Santiago
 // Description: This file contains all the HTM for the review page. It also includes the imports for 
 // Bootstrap CSS and JS. It also contains the imports for the local CSS and JS files. 
+// Updated on: 10/16/22
 -->
 
 <!DOCTYPE html>
@@ -119,7 +120,7 @@
               </span>
               <div class="form-floating">
                 <select class="form-select" id="f-select" name="f-select" aria-label="Drink select" required>
-                  <option id="option-default" name="option-default" selected>- Open to choose a drink -</option>
+                  <option id="option-default" name="option-default" value="" selected>- Open to choose a drink -</option>
                   <option id="option-espresso" name="option-optionespresso" value="espresso">Espresso</option>
                   <option id="option-latte" name="option-latte" value="latte">Latte</option>
                   <option id="option-mocha" name="option-mocha" value="mocha">Mocha</option>
@@ -217,7 +218,7 @@
           <div class="container mb-3 row col-xl-12">
             <div class="col-xl-6 mb-3 d-flex justify-content-between">
               <button type="button" class="btn btn-outline-info" data-bs-toggle="tooltip"
-              data-bs-title="Validate the provided data" id="f-validate-btn" name="f-validate-btn">
+              data-bs-title="Validate the provided data" id="f-validate-btn" name="f-validate-btn" onclick="validateForm()">
                 <i class="bi bi-shield-fill-exclamation" id="f-validate-btn-icon" name="f-validate-btn-icon"></i>
                 Validate
               </button>
@@ -255,9 +256,9 @@
             </button>
             
             <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip"
-            data-bs-title="Update the current review data" id="f-update-btn" name="f-update-btn">
-              <i class="bi bi-pencil-square" id="f-update-btn-icon" name="f-update-btn-icon"></i>
-              Update
+            data-bs-title="Update the current review data" id="f-update-btn" name="f-update-btn" onclick="saveChanges()">
+            <i class="bi bi-save"></i>
+              Save
             </button>
             
             <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip"
