@@ -3,7 +3,7 @@
 // File date: 9/21/22
 // Programmer: Manuel Sandoz Santiago
 // Description: This file contains the functions to be used on the coffee review page.
-// Update date: 10/16/22
+// Last update: 10/16/22
 */
 
 "use strict"
@@ -84,21 +84,16 @@ function validateDrink() {
 // Validate if a drink size has been chosen
 function validateDrinkSize() {
   var drinkSize = document.getElementsByName('f-size-option');
-  var flag = false;
 
   drinkSize.forEach(drink => {
     if (drink.checked) {
-      flag = true;
+      return true;
     }
   })
 
   // If there are no checked elements activate the alert
-  if (!flag) {
-    alert('Please select a drink size and try again')
-
-    return false;
-  }
-  return true;
+  alert('Please select a drink size and try again')
+  return false;
 }
 
 // Validates if there is text in the review text area
@@ -162,5 +157,45 @@ function validateForm() {
 
   if (validationSuccess) {
     alert('Validation successful');
+    return true;
+  }
+  return false;
+}
+
+function php_insert(){
+
+  // First validate the form
+  // If there is valid data proceed to create FormData object
+  if (validateForm()) {
+    let formData = new FormData(); // < - this will hold the form data
+
+    // After creating and asigning data to the object make the AJAX call
+    var packet = new XMLHttpRequest();
+
+    // Open the object
+    packet.open('POST', '../php/db_insert.php')
+
+    packet.onload = function() {
+      console.log(this.response);
+
+      if(this.response == true) {
+        
+        alert('insert succesful');
+      }
+      else {
+        alert('insert failed');
+      }
+    }
+    // Finally send the data
+    packet.send(formData);
+
+  } 
+  else { 
+    return;
   }
 }
+
+
+// TODO
+// 2. create different values for the thing on the thang
+// 3. Replace all alerts with custom messages
