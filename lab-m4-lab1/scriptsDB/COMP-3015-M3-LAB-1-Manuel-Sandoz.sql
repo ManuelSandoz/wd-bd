@@ -3,11 +3,7 @@
 // File date: 10/30/22
 // Programmer: Manuel Sandoz Santiago
 // Description: This file holds all the SQL commands used to create the database for the project. It also contains some queries as examples of how the data can be manipulated 
-*/
-
-
-/* TODO
-1.
+// Last update: 11/26/22
 */
 
 -- Create the brew_review database
