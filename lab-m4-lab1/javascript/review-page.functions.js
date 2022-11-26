@@ -12,7 +12,7 @@
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
-// This function is used to display the uploaded picture of the user
+// This function is used to display the uploaded picture by the user
 var loadImg = function (event) {
   var image = document.getElementById('f-review-img');
   image.srcset = URL.createObjectURL(event.target.files[0]);
@@ -111,9 +111,9 @@ function validateReview() {
 // Validate if the term and conditions are checked
 function validateAgreement() {
   var agreement = document.getElementById('f-legal-agree');
-  
+  let testing = agreement.checked;
   if(!agreement.checked){
-    alert('You must agree to the terms and conditions in order to continue')
+    alert('You must agree to the terms and conditions in order to continue');
 
     return false;
   }
@@ -163,17 +163,35 @@ function validateForm() {
 }
 
 function php_insert(){
-
   // First validate the form
   // If there is valid data proceed to create FormData object
   if (validateForm()) {
-    let formData = new FormData(); // < - this will hold the form data
+    let formData = new FormData();
+
+    let drinkSize;
+    document.getElementsByName('f-size-option').forEach(drink => {
+      if(drink.checked){
+        drinkSize = drink.value;
+      }
+    });
+
+  
+  let agreement = document.getElementById('f-legal-agree').checked ? 1 : 0;
+
+    // Saving values on FormData object
+    formData.append('firstName', document.getElementById('f-name').value);
+    formData.append('lastName', document.getElementById('f-last-name').value);
+    formData.append('email', document.getElementById('f-email').value);
+    formData.append('drink', document.querySelector('select option:checked').value);
+    formData.append('drinkSize', drinkSize);
+    formData.append('review', document.getElementById('f-review').value);
+    formData.append('agreement', agreemnent);
 
     // After creating and asigning data to the object make the AJAX call
     var packet = new XMLHttpRequest();
 
     // Open the object
-    packet.open('POST', '../php/db_insert.php')
+    packet.open('POST', '../php/brew_review-insert.php');
 
     packet.onload = function() {
       console.log(this.response);
@@ -191,11 +209,12 @@ function php_insert(){
 
   } 
   else { 
+
+    alert('There was an error saving the data on the server');
     return;
   }
 }
 
 
 // TODO
-// 2. create different values for the thing on the thang
 // 3. Replace all alerts with custom messages
