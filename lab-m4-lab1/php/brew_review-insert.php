@@ -18,14 +18,21 @@
 
 
   // Create a connection to the database
-  $dataBase = new mysqli('localhost', 'root', '', 'brew-review')
+  $dataBase = new mysqli('localhost', 'root', '', 'brew_review')
 
   if ($dataBase->connect_error) {
     die('ERROR: Database connection failed.' . $dataBase->connect_error)
   }
   else {
-    $dataToSend = $dataBase.prepare("insert into tbl_")
+
+    //before I send the data I want to make sure that the user uploading is not an existing user on the db 
+    // $query = $dataBase.prepare("insert into tbl_")
     // Recording 17
     // min 40:20
+
+    print('This is in php sucess')
+
+    $dataBase->close();
+    $query->close();
   }
 ?>
