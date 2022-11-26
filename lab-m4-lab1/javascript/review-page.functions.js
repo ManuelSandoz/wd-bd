@@ -84,16 +84,21 @@ function validateDrink() {
 // Validate if a drink size has been chosen
 function validateDrinkSize() {
   var drinkSize = document.getElementsByName('f-size-option');
+  var flag = false;
 
   drinkSize.forEach(drink => {
     if (drink.checked) {
-      return true;
+      flag = true;
     }
   })
 
   // If there are no checked elements activate the alert
-  alert('Please select a drink size and try again')
-  return false;
+  if (!flag) {
+    alert('Please select a drink size and try again')
+
+    return false;
+  }
+  return true;
 }
 
 // Validates if there is text in the review text area
@@ -166,7 +171,7 @@ function php_insert(){
   // First validate the form
   // If there is valid data proceed to create FormData object
   if (validateForm()) {
-    let formData = new FormData();
+    let reviewData = new FormData();
 
     let drinkSize;
     document.getElementsByName('f-size-option').forEach(drink => {
@@ -174,29 +179,29 @@ function php_insert(){
         drinkSize = drink.value;
       }
     });
-
   
-  let agreement = document.getElementById('f-legal-agree').checked ? 1 : 0;
+    let agreement = document.getElementById('f-legal-agree').checked ? 1 : 0;
 
     // Saving values on FormData object
-    formData.append('firstName', document.getElementById('f-name').value);
-    formData.append('lastName', document.getElementById('f-last-name').value);
-    formData.append('email', document.getElementById('f-email').value);
-    formData.append('drink', document.querySelector('select option:checked').value);
-    formData.append('drinkSize', drinkSize);
-    formData.append('review', document.getElementById('f-review').value);
-    formData.append('agreement', agreemnent);
+    reviewData.append('firstName', document.getElementById('f-name'));
+    reviewData.append('lastName', document.getElementById('f-last-name').value);
+    reviewData.append('email', document.getElementById('f-email').value);
+    reviewData.append('drink', document.querySelector('select option:checked').value);
+    reviewData.append('drinkSize', drinkSize);
+    reviewData.append('review', document.getElementById('f-review').value);
+    reviewData.append('agreement', agreement);
 
-    // After creating and asigning data to the object make the AJAX call
+    // AJAX call
     var packet = new XMLHttpRequest();
 
     // Open the object
     packet.open('POST', '../php/brew_review-insert.php');
 
     packet.onload = function() {
-      console.log(this.response);
-
-      if(this.response == true) {
+      console.log('This response', this.response);
+      
+      let insertResponse = this.response;
+      if(insertResponse == true) {
         
         alert('insert succesful');
       }
@@ -205,7 +210,7 @@ function php_insert(){
       }
     }
     // Finally send the data
-    packet.send(formData);
+    packet.send(reviewData);
 
   } 
   else { 
