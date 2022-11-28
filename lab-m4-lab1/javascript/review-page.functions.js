@@ -200,8 +200,7 @@ function php_insert(){
     packet.onload = function() {
       console.log('This response', this.response);
       
-      let insertResponse = this.response;
-      if(insertResponse == true) {
+      if(this.response) {
         
         alert('insert succesful');
       }
