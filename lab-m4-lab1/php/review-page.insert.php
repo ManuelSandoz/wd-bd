@@ -1,11 +1,14 @@
 <?php
   /*
-  // File name: MISSING
+  // File name: review-page.insert.php
   // File date: 11/25/22
   // Programmer: Manuel Sandoz Santiago
   // Description: MISSING
-  // Last update: --/--/--
+  // Last update: 11/28/22
   */
+
+  // FUTURE WORK
+  // 1. Create Users so 1 person can have multiple reviews
 
   // Unpack the POST variable into separate values
   $firstName = $_POST['firstName'];
@@ -24,8 +27,6 @@
     die('ERROR: Database connection failed.' . $dataBase->connect_error);
   }
   else {
-
-    //before I send the data I want to make sure that the user uploading is not an existing user on the db 
     $queryUser = $dataBase -> prepare('INSERT INTO tbl_USERS(firstName, lastName) VALUES(?,?)');
     $queryUser -> bind_param("ss", $firstName, $lastName);
 
@@ -44,6 +45,7 @@
       }
       else {
         echo 'Review insert failed';
+        echo(false);
       }
 
       echo(true);
