@@ -264,6 +264,75 @@ function php_update() {
   }
 }
 
+function php_delete() {
+  if (validateForm()) {
+    let reviewData = new FormData();
+
+    reviewData.append('firstName', document.getElementById('f-name').value);
+
+    let packet = new XMLHttpRequest();
+
+    packet.open('POST', '../brew-review.delete.php');
+
+    packet.onload = function() {
+      console.log('Response: ', this.response)
+
+      if (this.response) {
+        clearForm(); // <--- NEED TO CODE THIS
+        // document.getElementById().reset(); <--- This should work for the reset
+
+        alert('Record deleted successfully')
+      }
+      else {
+        alert('Error deleting the record')
+      }
+    }
+  } 
+  else {
+    alert('Error deleting the data')
+  }
+
+  packet.send(reviewData());
+}
+
+function php_select() {
+  if (validateForm()) {
+    let reviewData = new FormData();
+
+    reviewData.append('firstName', document.getElementById('f-name').value);
+
+    let packet = new XMLHttpRequest();
+
+    packet.open('POSt', '../php/review-page.select.php');
+
+    packet.onload = function () {
+      console.log('Response: ', this.response);
+
+      if (this.repose == true) {
+        
+        const arrayFieldsValue = JSON.parse(this.response)
+
+        document.getElementById('f-name').value = arrayFieldsValue['firstName']; //<- repeat this for each value of the form
+
+        
+        
+        alert ('Review found');
+
+
+      }
+      else {
+        alert('Review not found');
+        clearForm();
+      }
+    };
+
+    packet.send(reviewData);
+  }
+  else {
+    alert ('Error selecting the data');
+  }
+}
+
 
 // TODO
 // 3. Replace all alerts with custom messages
