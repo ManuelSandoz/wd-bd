@@ -24,30 +24,36 @@
     die('ERROR: Database connection failed.' . $dataBase->connect_error);
   }
   else {
-    // $query = $dataBase.query(
-    //   'SELECT id 
-    //   FROM tbl_USERS 
-    //   WHERE firstName = $firstName 
-    //   AND lastName = $lastName'
-    //   )
-
-    // print($query);
 
     //before I send the data I want to make sure that the user uploading is not an existing user on the db 
-    $query = $dataBase->prepare("insert into tbl_USERS(firstName, lastName) VALUES(?,?)");
+    $queryUser = $dataBase -> prepare('INSERT INTO tbl_USERS(firstName, lastName) VALUES(?,?)');
+    $queryUser -> bind_param("ss", $firstName, $lastName);
 
-    $query->bind_param("ss", $firstName, $lastName);
-    // Recording 17
-    // min 40:20
+    if ($queryUser -> execute() === TRUE) {
 
-    if ($query->execute() === TRUE) {
+      // Getting the auto generated id from tbl_USERS
+      $id = $queryUser -> insert_id; 
+
+      // echo '\n INSERT_ID = ' . $id;
+
+      $queryReview = $dataBase->prepare('INSERT INTO tbl_REVIEWS(email, drink, size, review, agreement, user_id) VALUES (?,?,?,?,?,?)');
+      $queryReview->bind_param('ssssii', $email, $drink, $drinkSize, $review, $agreement, $id);
+
+      if($queryReview -> execute() === TRUE) {
+        echo 'Review insert sucessful';
+      }
+      else {
+        echo 'Review insert failed';
+      }
+
       echo(true);
     } 
     else {
       echo(false);
     }
 
-    $dataBase->close();
-    $query->close();
+    $dataBas -> close();
+    $queryUser -> close();
+    $queryReview -> close();
   }
 ?>
