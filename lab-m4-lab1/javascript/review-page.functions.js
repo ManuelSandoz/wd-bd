@@ -198,7 +198,7 @@ function php_insert(){
     packet.open('POST', '../php/review-page.insert.php');
 
     packet.onload = function() {
-      console.log('This response', this.response);
+      console.log('This response (', this.response, ')');
       
       if(this.response) {
         
@@ -216,6 +216,51 @@ function php_insert(){
 
     alert('There was an error saving the data on the server');
     return;
+  }
+}
+
+function php_update() {
+
+  if (validateForm()) {
+    let reviewData = new FormData();
+
+    let drinkSize;
+    document.getElementsByName('f-size-option').forEach(drink => {
+      if(drink.checked){
+        drinkSize = drink.value;
+      }
+    });
+  
+    let agreement = document.getElementById('f-legal-agree').checked ? 1 : 0;
+
+    // Saving values on FormData object
+    reviewData.append('firstName', document.getElementById('f-name').value);
+    reviewData.append('lastName', document.getElementById('f-last-name').value);
+    reviewData.append('email', document.getElementById('f-email').value);
+    reviewData.append('drink', document.querySelector('select option:checked').value);
+    reviewData.append('drinkSize', drinkSize);
+    reviewData.append('review', document.getElementById('f-review').value);
+    reviewData.append('agreement', agreement);
+  
+    let packet = new XMLHttpRequest();
+
+    packet.open('POST', '../php/brew-review.update.php');
+
+    packet.onload = function() {
+      console.log('Response : ', this.response);
+
+      if (this.response) {
+        alert('Update successful');
+      }
+      else {
+        alert('Update failed');
+      }
+    };
+    
+    packet.send(reviewData);
+  }
+  else {
+    alert ('There was a problem updating the data')
   }
 }
 
