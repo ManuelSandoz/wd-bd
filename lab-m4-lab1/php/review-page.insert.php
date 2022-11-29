@@ -17,6 +17,8 @@
   $drink = $_POST['drink'];
   $drinkSize = $_POST['drinkSize'];
   $review = $_POST['review'];
+  $visitDate = $_POST['visitDate'];
+  $picture = $_POST['picture'];
   $agreement = $_POST['agreement'];
 
 
@@ -37,8 +39,8 @@
 
       // echo '\n INSERT_ID = ' . $id;
 
-      $queryReview = $dataBase->prepare('INSERT INTO tbl_REVIEWS(email, drink, size, review, agreement, user_id) VALUES (?,?,?,?,?,?)');
-      $queryReview->bind_param('ssssii', $email, $drink, $drinkSize, $review, $agreement, $id);
+      $queryReview = $dataBase->prepare('INSERT INTO tbl_REVIEWS(email, drink, size, review, visitDate, picture, agreement, user_id) VALUES (?,?,?,?,?,?,?,?)');
+      $queryReview->bind_param('ssssssii', $email, $drink, $drinkSize, $review, $visitDate, $picture, $agreement, $id);
 
       if($queryReview -> execute() === TRUE) {
         echo 'Review insert sucessful';
