@@ -23,6 +23,8 @@ CREATE TABLE tbl_REVIEWS (
     drink VARCHAR(15) NOT NULL,
     size VARCHAR(6) NOT NULL,
     review VARCHAR(255) NOT NULL,
+    visitDate VARCHAR(20) NULL,
+    picture VARCHAR(50) NULL,
     agreement BOOLEAN NOT NULL,
     user_id INT NOT NULL,
     FOREIGN KEY(user_id) REFERENCES tbl_USERS(id)
@@ -46,19 +48,19 @@ VALUES
 ('Maura', 'Sandoz');
 
 -- Inserting values into the reviews table 
-INSERT INTO tbl_REVIEWS (email, drink, size, review, agreement, user_id)
+INSERT INTO tbl_REVIEWS (email, drink, size, review, visitDate, picture, agreement, user_id)
 VALUES
-('manuel@email.com', 'latte', '12 oz.', "The best latte I've ever had in my life!!", 1, 1),
-('arosario@email.com', 'mocha', '12 oz.', "It was missing chocolate", 1, 2),
-('noalmeda@email.com', 'mocha', '8 oz.', "This is my favourite drink", 1, 3),
-('istago@gmail.com', 'cappuccino', '8 oz.', "The barista burnt the coffee", 1, 4),
-('msandoz@email.com', 'espresso', '8 oz.', "This barista is the best ever. I will definitely be back", 1, 5),
-('msandoz@email.com', 'mocha', '16 oz.', "I love mocha's and this one did not dissapoint", 1, 5),
-('manuel@email.com', 'latte', '16 oz.', "The coffe tasted like water! I will order a smaller size next time", 1, 1),
-('manuel@email.com', 'cappuccino', '8 oz.', "This was my first time trying this drink and I loved it.", 1, 1),
-('istago@email.com', 'latte', '12 oz.', "The barista was very friendly and skilled.", 1, 4),
-('noalmeda@email.com', 'latte', '16 oz.', "Good coffee", 1, 3),
-('manuel27@gmail.com', 'latte', '12 oz.', "Pretty good coffee. Will visit agian", 1, 1);
+('manuel@email.com', 'latte', '12 oz.', "The best latte I've ever had in my life!!", NULL, NULL, 1, 1),
+('arosario@email.com', 'mocha', '12 oz.', "It was missing chocolate", NULL, NULL, 1, 2),
+('noalmeda@email.com', 'mocha', '8 oz.', "This is my favourite drink", NULL, NULL, 1, 3),
+('istago@gmail.com', 'cappuccino', '8 oz.', "The barista burnt the coffee", NULL, NULL, 1, 4),
+('msandoz@email.com', 'espresso', '8 oz.', "This barista is the best ever. I will definitely be back", NULL, NULL, 1, 5),
+('msandoz@email.com', 'mocha', '16 oz.', "I love mocha's and this one did not dissapoint", NULL, NULL, 1, 5),
+('manuel@email.com', 'latte', '16 oz.', "The coffe tasted like water! I will order a smaller size next time", NULL, NULL, 1, 1),
+('manuel@email.com', 'cappuccino', '8 oz.', "This was my first time trying this drink and I loved it.", NULL, NULL, 1, 1),
+('istago@email.com', 'latte', '12 oz.', "The barista was very friendly and skilled.", NULL, NULL, 1, 4),
+('noalmeda@email.com', 'latte', '16 oz.', "Good coffee", NULL, NULL, 1, 3),
+('manuel27@gmail.com', 'latte', '12 oz.', "Pretty good coffee. Will visit agian", NULL, NULL, 1, 1);
 
 -- Updating the values for review table
 UPDATE tbl_REVIEWS
