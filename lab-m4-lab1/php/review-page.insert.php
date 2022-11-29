@@ -26,11 +26,11 @@
   $dataBase = new mysqli('localhost', 'root', '', 'brew_review');
 
   if ($dataBase->connect_error) {
-    die('ERROR: Database connection failed.' . $dataBase->connect_error);
+    die('ERROR: Database connection failed.' . $dataBase -> connect_error);
   }
   else {
     $queryUser = $dataBase -> prepare('INSERT INTO tbl_USERS(firstName, lastName) VALUES(?,?)');
-    $queryUser -> bind_param("ss", $firstName, $lastName);
+    $queryUser -> bind_param('ss', $firstName, $lastName);
 
     if ($queryUser -> execute() === TRUE) {
 
@@ -39,8 +39,8 @@
 
       // echo '\n INSERT_ID = ' . $id;
 
-      $queryReview = $dataBase->prepare('INSERT INTO tbl_REVIEWS(email, drink, size, review, visitDate, picture, agreement, user_id) VALUES (?,?,?,?,?,?,?,?)');
-      $queryReview->bind_param('ssssssii', $email, $drink, $drinkSize, $review, $visitDate, $picture, $agreement, $id);
+      $queryReview = $dataBase -> prepare('INSERT INTO tbl_REVIEWS(email, drink, size, review, visitDate, picture, agreement, user_id) VALUES (?,?,?,?,?,?,?,?)');
+      $queryReview -> bind_param('ssssssii', $email, $drink, $drinkSize, $review, $visitDate, $picture, $agreement, $id);
 
       if($queryReview -> execute() === TRUE) {
         echo 'Review insert sucessful';
