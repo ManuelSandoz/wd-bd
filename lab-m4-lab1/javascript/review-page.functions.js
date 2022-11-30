@@ -323,14 +323,10 @@ function php_select() {
         document.getElementById('f-review-img').srcset = '../images/' + searchResult['picture'];
         document.getElementById('f-legal-agree').checked = true;
         
-
-        // if (searchResult[''])
-        
         let drinks = document.getElementById("f-select").options;
         for (let i = 0; i < drinks.length; i++) {
           if (drinks[i].value == searchResult['drink']) {
             drinks[i].selected = true;
-            // console.log(sizes[i].value);
             break;
           }
         }
@@ -340,25 +336,16 @@ function php_select() {
         for (let i = 0; i < sizes.length; i++) {
           if (sizes[i].value == searchResult['size']){
             sizes[i].checked = true; 
+            break;
           }
         }
-
-        console.log('sizes ', sizes);
-        // sizes.forEach(size => {
-        //   console.log('size = ' ,size)
-        //   if (size.value == searchResult['drinkSize']) { 
-        //     size.checked = 1; 
-
-        //     console.log('This size ', size); // <------ not working
-        //   }
-        // });
 
         alert ('Review found');
 
       }
       else {
         alert('Review not found');
-        // clearForm();
+        clearForm();
       }
     };
 
@@ -367,6 +354,10 @@ function php_select() {
   else {
     alert ('Error selecting the data');
   }
+}
+
+function clearForm () {
+  
 }
 
 
