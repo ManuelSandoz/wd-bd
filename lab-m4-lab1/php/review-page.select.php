@@ -1,6 +1,7 @@
 <?php
 
   $firstName = $_POST['firstName'];
+  $lastName = $_POST['lastName'];
 
   $dataBase = new mysqli('localhost', 'root', '', 'brew_review');
 
@@ -8,7 +9,11 @@
     die('ERROR: Database conection failed' . $dataBase -> connect_error);
   }
   else {
-    $query = 'SELECT yadda yadda';
+    $query = "SELECT * 
+    FROM tbl_REVIEWS
+    JOIN tbl_USERS ON tbl_REVIEWS.user_id = tbl_USERS.id
+    WHERE firstName = '$firstName'
+    AND lastName = '$lastName'";
 
     $result = $dataBase -> query($query);
 
@@ -17,10 +22,17 @@
       while ($row = $result -> fetch_assoc()){
         $reviewRecord = array(
           'firstName' => $row['firstName'],
-          'yaddayadda'
+          'lastName' => $row['lastName'],
+          'email' => $row['email'],
+          'drink' => $row['drink'],
+          'size' => $row['size'],
+          'review' => $row['review'],
+          'visitDate' => $row['visitDate'],
+          'picture' => $row['picture'],
+          'agreement' => $row['agreement']
         );
 
-        echo json_encode($reviewRecord);
+        echo(json_encode($reviewRecord));
       }
     }
     else {

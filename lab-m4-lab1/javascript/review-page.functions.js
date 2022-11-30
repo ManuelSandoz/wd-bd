@@ -182,9 +182,6 @@ function php_insert(){
   
     let agreement = document.getElementById('f-legal-agree').checked ? 1 : 0;
 
-    // let image = document.getElementById('f-review-img');
-    // let file = image.srcset; 
-
     let filepath = document.getElementById('f-file-up').value;
     let image = filepath.replace(/.*[\/\\]/, '');
   
@@ -206,7 +203,7 @@ function php_insert(){
     packet.open('POST', '../php/review-page.insert.php');
 
     packet.onload = function() {
-      console.log('This response (', this.response, ')');
+      console.log('Insert response (', this.response, ')');
       
       if(this.response) {
         alert('insert succesful');
@@ -302,33 +299,66 @@ function php_delete() {
 }
 
 function php_select() {
-  if (validateForm()) {
+  if (validateFullName()) {
     let reviewData = new FormData();
 
     reviewData.append('firstName', document.getElementById('f-name').value);
+    reviewData.append('lastName', document.getElementById('f-last-name').value);
 
     let packet = new XMLHttpRequest();
-
     packet.open('POSt', '../php/review-page.select.php');
 
     packet.onload = function () {
-      console.log('Response: ', this.response);
-
-      if (this.repose == true) {
+      console.log('Select response ( ' + this.response + ' )');
+      
+      if (this.response != false) {
         
-        const arrayFieldsValue = JSON.parse(this.response)
+        const searchResult = JSON.parse(this.response)
 
-        document.getElementById('f-name').value = arrayFieldsValue['firstName']; //<- repeat this for each value of the form
+        document.getElementById('f-name').value = searchResult['firstName'];
+        document.getElementById('f-last-name').value = searchResult['lastName'];
+        document.getElementById('f-email').value = searchResult['email'];
+        document.getElementById('f-review').value = searchResult['review'];
+        document.getElementById('f-datetime').value = searchResult['visitDate'];
+        document.getElementById('f-review-img').srcset = '../images/' + searchResult['picture'];
+        document.getElementById('f-legal-agree').checked = true;
+        
+
+        // if (searchResult[''])
+        
+        let drinks = document.getElementById("f-select").options;
+        for (let i = 0; i < drinks.length; i++) {
+          if (drinks[i].value == searchResult['drink']) {
+            drinks[i].selected = true;
+            // console.log(sizes[i].value);
+            break;
+          }
+        }
 
         
-        
+        let sizes = document.getElementsByName("f-size-option");
+        for (let i = 0; i < sizes.length; i++) {
+          if (sizes[i].value == searchResult['size']){
+            sizes[i].checked = true; 
+          }
+        }
+
+        console.log('sizes ', sizes);
+        // sizes.forEach(size => {
+        //   console.log('size = ' ,size)
+        //   if (size.value == searchResult['drinkSize']) { 
+        //     size.checked = 1; 
+
+        //     console.log('This size ', size); // <------ not working
+        //   }
+        // });
+
         alert ('Review found');
-
 
       }
       else {
         alert('Review not found');
-        clearForm();
+        // clearForm();
       }
     };
 
