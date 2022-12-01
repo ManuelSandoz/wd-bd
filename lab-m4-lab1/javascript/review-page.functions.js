@@ -207,6 +207,7 @@ function php_insert(){
       
       if(this.response) {
         alert('insert succesful');
+        clearForm();
       }
       else {
         alert('insert failed');
@@ -254,6 +255,7 @@ function php_update() {
 
       if (this.response) {
         alert('Update successful');
+        clearForm();
       }
       else {
         alert('Update failed');
