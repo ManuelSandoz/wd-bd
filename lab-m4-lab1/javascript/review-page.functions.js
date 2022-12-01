@@ -281,8 +281,7 @@ function php_delete() {
       console.log('Response: ', this.response)
 
       if (this.response) {
-        clearForm(); // <--- NEED TO CODE THIS
-        // document.getElementById().reset(); <--- This should work for the reset
+        clearForm();
 
         alert('Record deleted successfully')
       }
@@ -298,7 +297,7 @@ function php_delete() {
   packet.send(reviewData());
 }
 
-function php_select() {
+function php_select() {// <---- Needs fixing for null values
   if (validateFullName()) {
     let reviewData = new FormData();
 
@@ -357,7 +356,8 @@ function php_select() {
 }
 
 function clearForm () {
-  
+  document.getElementById('coffee-review').reset()
+  document.getElementById('f-review-img').srcset = '';
 }
 
 
