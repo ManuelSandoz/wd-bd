@@ -21,7 +21,6 @@
   $picture = $_POST['picture'];
   $agreement = $_POST['agreement'];
 
-
   // Create a connection to the database
   $dataBase = new mysqli('localhost', 'root', '', 'brew_review');
 
@@ -35,18 +34,16 @@
     if ($queryUser -> execute() === TRUE) {
 
       // Getting the auto generated id from tbl_USERS
-      $id = $queryUser -> insert_id; 
-
-      // echo '\n INSERT_ID = ' . $id;
+      $id = $dataBase -> insert_id; 
 
       $queryReview = $dataBase -> prepare('INSERT INTO tbl_REVIEWS(email, drink, size, review, visitDate, picture, agreement, user_id) VALUES (?,?,?,?,?,?,?,?)');
       $queryReview -> bind_param('ssssssii', $email, $drink, $drinkSize, $review, $visitDate, $picture, $agreement, $id);
 
       if($queryReview -> execute() === TRUE) {
-        echo 'Review insert sucessful';
+        echo(true);
       }
       else {
-        echo 'Review insert failed';
+
         echo(false);
       }
 
