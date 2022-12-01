@@ -45,22 +45,27 @@ VALUES
 ('Alexandra', 'Rosario'),
 ('Noah', 'Almeda'),
 ('Irma', 'Santiago'),
-('Maura', 'Sandoz');
+('Maura', 'Sandoz'),
+('Leticia', 'Hernandez'),
+('Israel', 'Rosario'),
+('Shakill', 'Ruiz'),
+('Jesus', 'Sandoz'),
+('Pedro', 'Santiago');
 
 -- Inserting values into the reviews table 
 INSERT INTO tbl_REVIEWS (email, drink, size, review, visitDate, picture, agreement, user_id)
 VALUES
-('manuel@email.com', 'latte', '12 oz.', "The best latte I've ever had in my life!!", NULL, NULL, 1, 1),
-('arosario@email.com', 'mocha', '12 oz.', "It was missing chocolate", NULL, NULL, 1, 2),
-('noalmeda@email.com', 'mocha', '8 oz.', "This is my favourite drink", NULL, NULL, 1, 3),
-('istago@gmail.com', 'cappuccino', '8 oz.', "The barista burnt the coffee", NULL, NULL, 1, 4),
-('msandoz@email.com', 'espresso', '8 oz.', "This barista is the best ever. I will definitely be back", NULL, NULL, 1, 5),
-('msandoz@email.com', 'mocha', '16 oz.', "I love mocha's and this one did not dissapoint", NULL, NULL, 1, 5),
-('manuel@email.com', 'latte', '16 oz.', "The coffe tasted like water! I will order a smaller size next time", NULL, NULL, 1, 1),
-('manuel@email.com', 'cappuccino', '8 oz.', "This was my first time trying this drink and I loved it.", NULL, NULL, 1, 1),
-('istago@email.com', 'latte', '12 oz.', "The barista was very friendly and skilled.", NULL, NULL, 1, 4),
-('noalmeda@email.com', 'latte', '16 oz.', "Good coffee", NULL, NULL, 1, 3),
-('manuel27@gmail.com', 'latte', '12 oz.', "Pretty good coffee. Will visit agian", NULL, NULL, 1, 1);
+('manuel@email.com', 'latte', '12 oz.', "The best latte I've ever had in my life!!", '2022-11-29T10:32', 'review-img-2.png', 1, 1),
+('arosario@email.com', 'mocha', '12 oz.', "It was missing chocolate", '2022-11-29T10:32', 'review-img-3.png', 1, 2),
+('noalmeda@email.com', 'mocha', '8 oz.', "This is my favourite drink", '2022-11-29T10:32', 'review-img-2.png', 1, 3),
+('istago@gmail.com', 'cappuccino', '8 oz.', "The barista burnt the coffee", '2022-11-29T10:32', 'review-img-4.png', 1, 4),
+('msandoz@email.com', 'espresso', '8 oz.', "This barista is the best ever. I will definitely be back", '2022-11-29T10:32', 'review-img-1.png', 1, 5),
+('msandoz@email.com', 'mocha', '16 oz.', "I love mocha's and this one did not dissapoint", '2022-11-29T10:32', 'review-img-3.png', 1, 6),
+('lhernandez@email.com', 'latte', '16 oz.', "The coffe tasted like water! I will order a smaller size next time", '2022-11-29T10:32', 'review-img-2.png', 1, 7),
+('ih@email.com', 'cappuccino', '8 oz.', "This was my first time trying this drink and I loved it.", '2022-11-29T10:32', 'review-img-1.png', 1, 8),
+('sruiz@email.com', 'latte', '12 oz.', "The barista was very friendly and skilled.", '2022-11-29T10:32', 'review-img-4.png', 1, 9),
+('jesussandoz@email.com', 'latte', '16 oz.', "Good coffee", '2022-11-29T10:32', '', 1, 10),
+('ps@gmail.com', 'latte', '12 oz.', "Pretty good coffee. Will visit agian", '', 'review-img-2.png', 1, 1);
 
 -- Updating the values for review table
 UPDATE tbl_REVIEWS
