@@ -64,7 +64,7 @@ VALUES
 ('lhernandez@email.com', 'mocha', '16 oz.', "I love mocha's and this one did not dissapoint", '2022-11-29T10:32', 'review-img-3.png', 1, 6),
 ('irosario@email.com', 'latte', '16 oz.', "The coffe tasted like water! I will order a smaller size next time", '2022-11-29T10:32', 'review-img-2.png', 1, 7),
 ('sruiz@email.com', 'cappuccino', '8 oz.', "This was my first time trying this drink and I loved it.", '2022-11-29T10:32', 'review-img-1.png', 1, 8),
-('js@email.com', 'latte', '12 oz.', "The barista was very friendly and skilled.", '2022-11-29T10:32', 'review-img-4.png', 1, 9),
+('js@email.com', 'latte', '12 oz.', "The barista was very friendly and skilled.", '', 'review-img-4.png', 1, 9),
 ('psantiago@email.com', 'latte', '16 oz.', "Good coffee", '2022-11-29T10:32', '', 1, 10),
 ('fulano@gmail.com', 'latte', '12 oz.', "Pretty good coffee. Will visit agian", '', 'review-img-2.png', 1, 11);
 
