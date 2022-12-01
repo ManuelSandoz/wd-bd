@@ -167,7 +167,7 @@ function validateForm() {
   return false;
 }
 
-function php_insert(){
+function php_insert() {
   // First validate the form
   // If there is valid data proceed to create FormData object
   if (validateForm()) {
@@ -183,7 +183,11 @@ function php_insert(){
     let agreement = document.getElementById('f-legal-agree').checked ? 1 : 0;
 
     let filepath = document.getElementById('f-file-up').value;
+    // console.log('filepath b4 ', filepath);
     let image = filepath.replace(/.*[\/\\]/, '');
+
+    let visitDate =  document.getElementById('f-datetime').value;
+    // console.log(visitDate, 'visitdate');
   
     // Saving values on FormData object
     reviewData.append('firstName', document.getElementById('f-name').value);
@@ -299,7 +303,7 @@ function php_delete() {
   packet.send(reviewData());
 }
 
-function php_select() {// <---- Needs fixing for null values
+function php_select() {
   if (validateFullName()) {
     let reviewData = new FormData();
 
@@ -321,9 +325,16 @@ function php_select() {// <---- Needs fixing for null values
         document.getElementById('f-email').value = searchResult['email'];
         document.getElementById('f-review').value = searchResult['review'];
         document.getElementById('f-datetime').value = searchResult['visitDate'];
-        document.getElementById('f-review-img').srcset = '../images/' + searchResult['picture'];
         document.getElementById('f-legal-agree').checked = true;
-        
+
+        if (searchResult['picture'] == '') {
+          document.getElementById('f-review-img').srcset = '../images/upload-placeholder.png';
+        }
+        else {
+          document.getElementById('f-review-img').srcset = '../images/' + searchResult['picture'];
+
+        }
+
         let drinks = document.getElementById("f-select").options;
         for (let i = 0; i < drinks.length; i++) {
           if (drinks[i].value == searchResult['drink']) {

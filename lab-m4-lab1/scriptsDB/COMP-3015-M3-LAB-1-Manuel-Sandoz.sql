@@ -50,7 +50,8 @@ VALUES
 ('Israel', 'Rosario'),
 ('Shakill', 'Ruiz'),
 ('Jesus', 'Sandoz'),
-('Pedro', 'Santiago');
+('Pedro', 'Santiago'),
+('Lebron', 'James');
 
 -- Inserting values into the reviews table 
 INSERT INTO tbl_REVIEWS (email, drink, size, review, visitDate, picture, agreement, user_id)
@@ -60,12 +61,12 @@ VALUES
 ('noalmeda@email.com', 'mocha', '8 oz.', "This is my favourite drink", '2022-11-29T10:32', 'review-img-2.png', 1, 3),
 ('istago@gmail.com', 'cappuccino', '8 oz.', "The barista burnt the coffee", '2022-11-29T10:32', 'review-img-4.png', 1, 4),
 ('msandoz@email.com', 'espresso', '8 oz.', "This barista is the best ever. I will definitely be back", '2022-11-29T10:32', 'review-img-1.png', 1, 5),
-('msandoz@email.com', 'mocha', '16 oz.', "I love mocha's and this one did not dissapoint", '2022-11-29T10:32', 'review-img-3.png', 1, 6),
-('lhernandez@email.com', 'latte', '16 oz.', "The coffe tasted like water! I will order a smaller size next time", '2022-11-29T10:32', 'review-img-2.png', 1, 7),
-('ih@email.com', 'cappuccino', '8 oz.', "This was my first time trying this drink and I loved it.", '2022-11-29T10:32', 'review-img-1.png', 1, 8),
-('sruiz@email.com', 'latte', '12 oz.', "The barista was very friendly and skilled.", '2022-11-29T10:32', 'review-img-4.png', 1, 9),
-('jesussandoz@email.com', 'latte', '16 oz.', "Good coffee", '2022-11-29T10:32', '', 1, 10),
-('ps@gmail.com', 'latte', '12 oz.', "Pretty good coffee. Will visit agian", '', 'review-img-2.png', 1, 1);
+('lhernandez@email.com', 'mocha', '16 oz.', "I love mocha's and this one did not dissapoint", '2022-11-29T10:32', 'review-img-3.png', 1, 6),
+('irosario@email.com', 'latte', '16 oz.', "The coffe tasted like water! I will order a smaller size next time", '2022-11-29T10:32', 'review-img-2.png', 1, 7),
+('sruiz@email.com', 'cappuccino', '8 oz.', "This was my first time trying this drink and I loved it.", '2022-11-29T10:32', 'review-img-1.png', 1, 8),
+('js@email.com', 'latte', '12 oz.', "The barista was very friendly and skilled.", '2022-11-29T10:32', 'review-img-4.png', 1, 9),
+('psantiago@email.com', 'latte', '16 oz.', "Good coffee", '2022-11-29T10:32', '', 1, 10),
+('fulano@gmail.com', 'latte', '12 oz.', "Pretty good coffee. Will visit agian", '', 'review-img-2.png', 1, 11);
 
 -- Updating the values for review table
 UPDATE tbl_REVIEWS
@@ -85,8 +86,11 @@ SET size = "16 oz."
 WHERE review_id = 2;
 
 -- Deleting an entry from review table
-DELETE FROM tbl_REVIEWS
+DELETE tbl_REVIEWS FROM tbl_REVIEWS
 WHERE review_id = 11; 
+
+DELETE tbl_USERS FROM tbl_USERS
+WHERE id = 11;
 
 -- Select queries
 SELECT * 
