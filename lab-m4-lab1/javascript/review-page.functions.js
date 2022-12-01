@@ -183,11 +183,7 @@ function php_insert() {
     let agreement = document.getElementById('f-legal-agree').checked ? 1 : 0;
 
     let filepath = document.getElementById('f-file-up').value;
-    // console.log('filepath b4 ', filepath);
     let image = filepath.replace(/.*[\/\\]/, '');
-
-    let visitDate =  document.getElementById('f-datetime').value;
-    // console.log(visitDate, 'visitdate');
   
     // Saving values on FormData object
     reviewData.append('firstName', document.getElementById('f-name').value);
@@ -241,6 +237,10 @@ function php_update() {
   
     let agreement = document.getElementById('f-legal-agree').checked ? 1 : 0;
 
+    let filepath = document.getElementById('f-file-up').value;
+    let image = filepath.replace(/.*[\/\\]/, '');
+    image = image == 'upload-placeholder.png' ? '' : image;
+  
     // Saving values on FormData object
     reviewData.append('firstName', document.getElementById('f-name').value);
     reviewData.append('lastName', document.getElementById('f-last-name').value);
@@ -248,6 +248,8 @@ function php_update() {
     reviewData.append('drink', document.querySelector('select option:checked').value);
     reviewData.append('drinkSize', drinkSize);
     reviewData.append('review', document.getElementById('f-review').value);
+    reviewData.append('visitDate', document.getElementById('f-datetime').value);
+    reviewData.append('picture', image);
     reviewData.append('agreement', agreement);
   
     let packet = new XMLHttpRequest();
@@ -255,7 +257,7 @@ function php_update() {
     packet.open('POST', '../php/brew-review.update.php');
 
     packet.onload = function() {
-      console.log('Response : ', this.response);
+      console.log('Update response : ', this.response);
 
       if (this.response) {
         alert('Update successful');
