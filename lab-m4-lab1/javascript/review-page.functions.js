@@ -206,7 +206,7 @@ function php_insert() {
       console.log('Insert response (', this.response, ')');
       
       if(this.response) {
-        alert('insert succesful');
+        alert('Insert succesful');
         clearForm();
       }
       else {
