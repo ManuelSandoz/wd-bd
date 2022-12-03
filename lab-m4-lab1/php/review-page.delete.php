@@ -8,6 +8,7 @@
   */
 
   $firstName = $_POST['firstName'];
+  $lastName = $_POST['lastName'];
 
 
   $dataBase = new mysqli('localhost', 'root', '', 'brew_review');
@@ -16,16 +17,30 @@
     die('ERROR: Database conection failed.' . $dataBase -> connect_error);
   }
   else {
-    $query = 'SELECT YADDA YADDA';
+    $query = "SELECT * 
+      FROM tbl_USERS
+      JOIN tbl_USERS ON tbl_USERS.id = tbl_REVIEWS
+      WHERE 
+        firstName = $firstName,
+      AND 
+        lastName = $lastName";
 
     $queryResult = $dataBase -> query($query);
 
     if ($queryResult -> num_rows > 0) {
-      $queryDelete = 'Delete from yadda yadda';
+    $queryDelete = "DELETE [target table]  
+        FROM 
+          [table1]  
+        JOIN 
+          [table2]  
+        ON 
+          [table1.[joining column] = [table2].[joining column]  
+        WHERE 
+          [condition]";
 
-      $deleteResult = $dataBase -> query($queryDelete);
+      // $deleteResult = $dataBase -> query($queryDelete);
 
-      echo(true);
+      echo($queryResult);
     }
     else {
       echo(false);

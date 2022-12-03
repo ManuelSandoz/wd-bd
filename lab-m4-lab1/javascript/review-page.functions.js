@@ -223,7 +223,7 @@ function php_insert() {
   }
 }
 
-function php_update() {
+function php_update() {// < ----- THIS IS NOT WORKING PROPERLY
 
   if (validateForm()) {
     let reviewData = new FormData();
@@ -254,12 +254,13 @@ function php_update() {
   
     let packet = new XMLHttpRequest();
 
-    packet.open('POST', '../php/brew-review.update.php');
+    packet.open('POST', '../php/review-page.update.php');
 
     packet.onload = function() {
       console.log('Update response : ', this.response);
 
-      if (this.response) {
+      
+      if (this.response == true) {
         alert('Update successful');
         clearForm();
       }
@@ -280,10 +281,11 @@ function php_delete() {
     let reviewData = new FormData();
 
     reviewData.append('firstName', document.getElementById('f-name').value);
+    reviewData.append('lastName', document.getElementById('f-last-name').value);
 
     let packet = new XMLHttpRequest();
 
-    packet.open('POST', '../brew-review.delete.php');
+    packet.open('POST', '../php/review-page.delete.php');
 
     packet.onload = function() {
       console.log('Response: ', this.response)
@@ -297,12 +299,13 @@ function php_delete() {
         alert('Error deleting the record')
       }
     }
+
+    packet.send(reviewData);
+
   } 
   else {
     alert('Error deleting the data')
   }
-
-  packet.send(reviewData());
 }
 
 function php_select() {
