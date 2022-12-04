@@ -277,7 +277,8 @@ function php_update() {// < ----- THIS IS NOT WORKING PROPERLY
 }
 
 function php_delete() {
-  if (validateForm()) {
+  if (validateFullName()) {
+    
     let reviewData = new FormData();
 
     reviewData.append('firstName', document.getElementById('f-name').value);
@@ -293,10 +294,10 @@ function php_delete() {
       if (this.response) {
         clearForm();
 
-        alert('Record deleted successfully')
+        alert('Record deleted successfully');
       }
       else {
-        alert('Error deleting the record')
+        alert('Error deleting the record');
       }
     }
 
@@ -304,7 +305,7 @@ function php_delete() {
 
   } 
   else {
-    alert('Error deleting the data')
+    alert('Error deleting the data');
   }
 }
 
@@ -374,7 +375,7 @@ function php_select() {
 }
 
 function clearForm () {
-  document.getElementById('coffee-review').reset()
+  document.getElementById('coffee-review').reset();
   document.getElementById('f-review-img').srcset = '';
 }
 
