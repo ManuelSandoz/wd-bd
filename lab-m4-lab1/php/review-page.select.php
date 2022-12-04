@@ -1,4 +1,11 @@
 <?php
+  /*
+  // File name: review-page.select.php
+  // File date: 11/28/22
+  // Programmer: Manuel Sandoz Santiago
+  // Description: MISSING
+  // Last update: --/--/--
+  */
 
   $firstName = $_POST['firstName'];
   $lastName = $_POST['lastName'];
