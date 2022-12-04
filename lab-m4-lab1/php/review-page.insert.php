@@ -53,7 +53,7 @@
       echo(false);
     }
 
-    $dataBas -> close();
+    $dataBase -> close();
     $queryUser -> close();
     $queryReview -> close();
   }
