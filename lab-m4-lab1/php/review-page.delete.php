@@ -18,29 +18,43 @@
   }
   else {
     $query = "SELECT * 
-      FROM tbl_USERS
-      JOIN tbl_USERS ON tbl_USERS.id = tbl_REVIEWS
+      FROM 
+        tbl_USERS AS u
+      JOIN 
+        tbl_REVIEWS AS r 
+      ON 
+        u.id = r.user_id
       WHERE 
-        firstName = $firstName,
+        u.firstName = '$firstName'
       AND 
-        lastName = $lastName";
+        u.lastName = '$lastName'";
 
     $queryResult = $dataBase -> query($query);
 
     if ($queryResult -> num_rows > 0) {
-    $queryDelete = "DELETE [target table]  
+      $reviewDeleteQuery = "DELETE R
         FROM 
-          [table1]  
+          tbl_REVIEWS AS R  
         JOIN 
-          [table2]  
+          tbl_USERS AS U
         ON 
-          [table1.[joining column] = [table2].[joining column]  
+        U.id = R.user_id  
         WHERE 
-          [condition]";
+        U.firstName = '$firstName'
+        AND
+        U.lastName = '$lastName'";
 
-      // $deleteResult = $dataBase -> query($queryDelete);
+      $userDeleteQuery = "DELETE 
+      FROM tbl_USERS
+      WHERE 
+      tbl_USERS.firstName = '$firstName'
+      AND
+      tbl_USERS.lastName = '$lastName'";
 
-      echo($queryResult);
+      $reviewDeleteResult = $dataBase -> query($reviewDeleteQuery);
+      $userDeleteResult = $dataBase -> query($userDeleteQuery);
+
+      echo(true);
     }
     else {
       echo(false);
