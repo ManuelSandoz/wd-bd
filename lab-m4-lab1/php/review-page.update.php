@@ -1,5 +1,4 @@
 <?php
-
   /*
   // File name: review-page.update.php
   // File date: 11/28/22
@@ -26,22 +25,23 @@
     die('ERROR: Database connection failed. ' . $dataBase -> connect_error);
   }
   else { 
-    $query = "UPDATE
-        tbl_REVIEWS
-      INNER JOIN
-        tbl_USERS ON tbl_REVIEWS.id = tbl_REVIEWS.user_id
-      SET
-        tbl_REVIEWS.email = $email,
-        tbl_REVIEWS.drink = $drink,
-        tbl_REVIEWS.size = $drinkSize,
-        tbl_REVIEWS.review = $review,
-        tbl_REVIEWS.visitDate = $visitDate,
-        tbl_REVIEWS.picture = $picture,
-        tbl_REVIEWS.agreement = $agreement,
-      WHERE
-        tbl_USERS.firstName = $firstName
-      AND
-        tbl_USERS.lastName = $lastName";
+    $query = "UPDATE tbl_REVIEWS AS r
+      JOIN 
+        tbl_USERS AS u
+      ON 
+        u.id = r.user_id
+      SET 
+        r.email = '$email',
+        r.drink = '$drink',
+        r.size = '$drinkSize',
+        r.review = '$review',
+        r.visitDate = '$visitDate',
+        r.picture = '$picture',
+        r.agreement = '$agreement'
+      WHERE 
+        u.firstName = '$firstName'
+      AND 
+      u.lastName = '$lastName'";
     
     if ($dataBase -> query($query)) {
       echo(true);
