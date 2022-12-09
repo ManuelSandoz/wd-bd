@@ -3,8 +3,8 @@
   // File name: review-page.delete .php
   // File date: 11/28/22
   // Programmer: Manuel Sandoz Santiago
-  // Description: MISSING
-  // Last update: --/--/--
+  // Description: File containing the PHP code for the DELETE query on the brew_review funciton
+  // Last update: 12/9/22
   */
 
   $firstName = $_POST['firstName'];

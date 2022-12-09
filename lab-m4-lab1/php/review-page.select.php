@@ -3,8 +3,8 @@
   // File name: review-page.select.php
   // File date: 11/28/22
   // Programmer: Manuel Sandoz Santiago
-  // Description: MISSING
-  // Last update: --/--/--
+  // Description: File contains the PHP code utilized to perform the SELECT query on the brew_review database. 
+  // Last update: 12/9/22
   */
 
   $firstName = $_POST['firstName'];

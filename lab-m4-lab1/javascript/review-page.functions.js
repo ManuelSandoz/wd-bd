@@ -3,7 +3,7 @@
 // File date: 9/21/22
 // Programmer: Manuel Sandoz Santiago
 // Description: This file contains the functions to be used on the coffee review page.
-// Last update: 10/16/22
+// Last update: 12/9/22
 */
 
 "use strict"
@@ -223,7 +223,7 @@ function php_insert() {
   }
 }
 
-function php_update() {// < ----- THIS IS NOT WORKING PROPERLY
+function php_update() {
 
   if (validateForm()) {
     let reviewData = new FormData();
@@ -378,7 +378,6 @@ function clearForm () {
   document.getElementById('coffee-review').reset();
   document.getElementById('f-review-img').srcset = '';
 }
-
 
 // TODO
 // 3. Replace all alerts with custom messages

@@ -3,8 +3,8 @@
   // File name: review-page.update.php
   // File date: 11/28/22
   // Programmer: Manuel Sandoz Santiago
-  // Description: MISSING
-  // Last update: --/--/--
+  // Description: This document contains the PHP code utillized to preform the UPDATE query on the brew-review application
+  // Last update: 12/9/22
   */
 
   // Unpack the POST variable into separate values

@@ -3,8 +3,8 @@
   // File name: review-page.insert.php
   // File date: 11/25/22
   // Programmer: Manuel Sandoz Santiago
-  // Description: MISSING
-  // Last update: 11/28/22
+  // Description: File contains the PHP code utilized to preform the INSERT query on the brew_review database
+  // Last update: 12/9/22
   */
 
   // FUTURE WORK
