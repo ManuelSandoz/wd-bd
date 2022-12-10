@@ -39,3 +39,7 @@ span.custom-input-txt-clr {
 input[type="file"]::file-selector-button {
   background-color: #A8BDB2;
 }
+
+.modal-body {
+  height: 20vh;
+}

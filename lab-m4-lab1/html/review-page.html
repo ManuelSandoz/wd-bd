@@ -24,6 +24,10 @@
 
     <!-- JavaScript Bundle with Popper for Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    
+    <!-- JQuery js import -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 
     <!-- Local CSS import -->
     <link rel="stylesheet" href="../css/review-page.styles.css">
@@ -53,7 +57,7 @@
                 <a class="nav-link" href="#" id="h-menu-profile-link" name="h-menu-profile-link">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" id="h-menu-lists-link" name="h-menu-list-link">Lists</a>
+                <a class="nav-link" href="#" id="h-menu-lists-link" name="h-menu-list-link" onclick="modalWarning('WARNIGN')">Lists</a>
               </li>
             </ul>
           </div>
@@ -261,16 +265,16 @@
               Save
             </button>
             
-            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip"
-            data-bs-title="Write a new review" id="f-add-review-btn" name="f-add-review-btn">
+            <button type="button" class="btn btn-outline-secondary" 
+            data-bs-title="Write a new review" id="f-add-review-btn" name="f-add-review-btn" data-bs-toggle="tooltip" onclick="modalSuccess('Review found successfully')">
               <i class="bi bi-plus-square-fill" id="f-add-review-btn-icon" name="f-add-review-btn-icon"></i>  
               New
             </button>
+
           </div>
-          </div>
+        </div>
       </form>
     </fieldset>
-
     <!-- Footer -->
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top" id="footer" name="footer">
       <div class="col-md-4 d-flex align-items-center">
@@ -301,5 +305,36 @@
         </li>
       </ul>
     </footer>
+
+
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Launch static backdrop modal
+    </button> -->
+
+        <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" name="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <div class="modal-header" name="modal--header" id="modal--header">
+            <h3 class="modal-title fs-5" id="staticBackdropLabel" name="staticBackdropLabel">Confirmation</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" name="modal--header-btn" id="modal--header-btn"></button>
+          </div>
+
+          <div class="modal-body" name="modal--body-container" id="modal--body-container">
+            <p class="fs-6" name="modal--body-mssg" id="modal--body-mssg"></p>
+          </div>
+
+          <div class="modal-footer" name="modal--footer-container"id="modal--footer-container">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="modal--footer-close-btn" name="modal--footer-close-btn">Close</button>
+            <button type="button" class="btn btn-primary" id="modal--footer-confirm-btn" name="modal--footer-confirm-btn">Confirm</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

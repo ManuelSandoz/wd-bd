@@ -127,7 +127,7 @@ function validateAgreement() {
 
 // This function will validate through the inputs on the form
 function validateForm() {
-
+  
   var validationSuccess = true;
   
   // Validating if name and last name field are not empty
@@ -378,6 +378,39 @@ function clearForm () {
   document.getElementById('coffee-review').reset();
   document.getElementById('f-review-img').srcset = '';
 }
+
+// Javascrip for the focus modal
+// const myModal = document.getElementById('myModal')
+// const myInput = document.getElementById('myInput')
+
+// myModal.addEventListener('shown.bs.modal', () => {
+//   myInput.focus()
+// })
+
+function modalSuccess (message) {
+  document.getElementById('staticBackdropLabel').innerHTML = "Success!";
+  document.getElementById('modal--body-mssg').innerHTML = message;
+
+  
+  $('#staticBackdrop').modal('show');
+  $('#modal--footer-container').hide()
+  $('#modal--header').css('background-color', '#A8BDB2')
+}
+
+function modalWarning (message) {
+  document.getElementById('staticBackdropLabel').innerHTML = "Success!";
+  document.getElementById('modal--body-mssg').innerHTML = message;
+
+  
+  $('#staticBackdrop').modal('show');
+  $('#modal--footer-container').show();
+  $('#modal--header').css('background-color', '#A8BDB2')
+}
+
+function modalError (message) {
+
+}
+
 
 // TODO
 // 3. Replace all alerts with custom messages
