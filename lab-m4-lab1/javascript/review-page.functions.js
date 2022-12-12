@@ -3,7 +3,7 @@
 // File date: 9/21/22
 // Programmer: Manuel Sandoz Santiago
 // Description: This file contains the functions to be used on the coffee review page.
-// Last update: 12/9/22
+// Last update: 12/10/22
 */
 
 "use strict"
@@ -30,10 +30,10 @@ function saveChanges() {
       localStorage.setItem(input.id, input.value);
     });
 
-    alert('Data saved sucessfully')
+    modalSuccess('Review saved sucessfully')
 
   } catch (e) {
-    alert('There was an error saving the data. \n Please try again')
+    modalError('There was an error saving the data. \n Please try again')
   }
 }
 
@@ -43,7 +43,7 @@ function validateEmail() {
   var email = document.getElementById('f-email');
 
   if (!regex.test(email.value)) {
-    alert('Please enter a valid email address');
+    // modalError('Please enter a valid email address');
 
     return false;
   }
@@ -56,13 +56,13 @@ function validateFullName() {
   var lastName = document.getElementById('f-last-name');
 
   if(name.value === '') {
-    alert('Please enter a valid name and try agian')
+    // modalError('Please enter a valid name and try agian')
 
     return false;
   }
 
   if(lastName.value === '') {
-    alert('Please enter a valid last name and try again')
+    // modalError('Please enter a valid last name and try again')
 
     return false;
   }
@@ -74,7 +74,7 @@ function validateDrink() {
   var selectedDrink = document.querySelector('select option:checked');
 
   if(selectedDrink.value === '') {
-    alert('Please choose a drink to review and try again')
+    // modalError('Please choose a drink to review and try again')
 
     return false;
   }
@@ -94,7 +94,7 @@ function validateDrinkSize() {
 
   // If there are no checked elements activate the alert
   if (!flag) {
-    alert('Please select a drink size and try again')
+    // modalError('Please select a drink size and try again')
 
     return false;
   }
@@ -106,7 +106,7 @@ function validateReview() {
   var reviewText = document.getElementById('f-review');
 
   if (reviewText.value === '') {
-    alert('Plase enter your review and try again');
+    // modalError('Plase enter your review and try again');
 
     return false;
   }
@@ -116,9 +116,8 @@ function validateReview() {
 // Validate if the term and conditions are checked
 function validateAgreement() {
   var agreement = document.getElementById('f-legal-agree');
-  let testing = agreement.checked;
   if(!agreement.checked){
-    alert('You must agree to the terms and conditions in order to continue');
+    // modalError('You must agree to the terms and conditions in order to continue');
 
     return false;
   }
@@ -127,7 +126,7 @@ function validateAgreement() {
 
 // This function will validate through the inputs on the form
 function validateForm() {
-  
+
   var validationSuccess = true;
   
   // Validating if name and last name field are not empty
@@ -161,9 +160,11 @@ function validateForm() {
   }
 
   if (validationSuccess) {
-    alert('Validation successful');
+    modalSuccess('Data validation successful.');
     return true;
   }
+
+  modalError('Make sure the information provided is correct and try again')
   return false;
 }
 
@@ -206,11 +207,11 @@ function php_insert() {
       console.log('Insert response (', this.response, ')');
       
       if(this.response) {
-        alert('Insert succesful');
+        modalSuccess('Review insert succesful');
         clearForm();
       }
       else {
-        alert('insert failed');
+        modalError('Review insert failed');
       }
     }
     // Finally send the data
@@ -218,8 +219,7 @@ function php_insert() {
 
   } 
   else { 
-
-    alert('There was an error saving the data on the server');
+    modalError('Error saving the data on the server'); // <--- This message is overriding the one on validation
   }
 }
 
@@ -261,18 +261,18 @@ function php_update() {
 
       
       if (this.response == true) {
-        alert('Update successful');
+        modalSuccess('Review updated successful.');
         clearForm();
       }
       else {
-        alert('Update failed');
+        modalError('Review update failed');
       }
     };
     
     packet.send(reviewData);
   }
   else {
-    alert ('There was a problem updating the data')
+    modalError('There was a problem updating the review data')
   }
 }
 
@@ -294,10 +294,10 @@ function php_delete() {
       if (this.response) {
         clearForm();
 
-        alert('Record deleted successfully');
+        modalSuccess('Record deleted successfully');
       }
       else {
-        alert('Error deleting the record');
+        modalError('Error deleting the record');
       }
     }
 
@@ -305,7 +305,7 @@ function php_delete() {
 
   } 
   else {
-    alert('Error deleting the data');
+    modalError('Error deleting the data');
   }
 }
 
@@ -358,11 +358,11 @@ function php_select() {
           }
         }
 
-        alert ('Review found');
+        modalSuccess('Review found successfully');
 
       }
       else {
-        alert('Review not found');
+        modalError('Review was not found');
         clearForm();
       }
     };
@@ -370,7 +370,7 @@ function php_select() {
     packet.send(reviewData);
   }
   else {
-    alert ('Error selecting the data');
+    modalError('Error selecting the data');
   }
 }
 
@@ -391,26 +391,35 @@ function modalSuccess (message) {
   document.getElementById('staticBackdropLabel').innerHTML = "Success!";
   document.getElementById('modal--body-mssg').innerHTML = message;
 
-  
   $('#staticBackdrop').modal('show');
-  $('#modal--footer-container').hide()
-  $('#modal--header').css('background-color', '#A8BDB2')
+  $('#modal--footer-container').hide();
+  $('#modal--header').removeClass('bg-danger gradient');
+  $('#modal--header').removeClass('bg-warning gradient');
+  $('#modal--header').addClass('text-white');
+  $('#modal--header').css('background-color', '#A8BDB2');
 }
 
 function modalWarning (message) {
-  document.getElementById('staticBackdropLabel').innerHTML = "Success!";
+  document.getElementById('staticBackdropLabel').innerHTML = "Warning!";
   document.getElementById('modal--body-mssg').innerHTML = message;
 
   
   $('#staticBackdrop').modal('show');
   $('#modal--footer-container').show();
-  $('#modal--header').css('background-color', '#A8BDB2')
+  $('#modal--header').removeClass('bg-danger gradient');
+  $('#modal--header').addClass('bg-warning gradient text-white');
 }
 
-function modalError (message) {
+function modalError(message) {
+  document.getElementById('staticBackdropLabel').innerHTML = "Error!";
+  document.getElementById('modal--body-mssg').innerHTML = message;
 
+  
+  $('#staticBackdrop').modal('show');
+  $('#modal--footer-container').hide();
+  $('#modal--header').removeClass('bg-warning gradient');
+  $('#modal--header').addClass('bg-danger gradient text-white')
 }
-
 
 // TODO
 // 3. Replace all alerts with custom messages
