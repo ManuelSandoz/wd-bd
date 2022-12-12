@@ -43,3 +43,7 @@ input[type="file"]::file-selector-button {
 .modal-body {
   height: 20vh;
 }
+
+#modal--body-mssg {
+  white-space: pre !important;
+}
