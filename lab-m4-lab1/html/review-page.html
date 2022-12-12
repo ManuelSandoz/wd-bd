@@ -4,7 +4,7 @@
 // Programmer: Manuel Sandoz Santiago
 // Description: This file contains all the HTM for the review page. It also includes the imports for 
 // Bootstrap CSS and JS. It also contains the imports for the local CSS and JS files. 
-// Updated on: 10/16/22
+// Updated on: 12/10/22
 -->
 
 <!DOCTYPE html>
@@ -54,10 +54,23 @@
                 <a class="nav-link active" aria-current="page" href="#" id="h-menu-home-link" name="h-menu-home-link">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" id="h-menu-profile-link" name="h-menu-profile-link">Profile</a>
+                <a class="nav-link" href="#" id="h-menu-profile-link" name="h-menu-profile-link">About Us</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" id="h-menu-lists-link" name="h-menu-list-link" onclick="modalWarning('WARNIGN')">Lists</a>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Actions
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" onclick="validateForm()">Validate</a></li>
+                  <li><a class="dropdown-item" onclick="php_insert()">Submit</a></li>
+                  <li><a class="dropdown-item" onclick="clearForm()">Clear</a></li>
+                  <li><a class="dropdown-item" onclick="modalWarning('Are you sure you want to permanently delete this review?')">Delete</a></li>
+                  <li><a class="dropdown-item" onclick="php_select()">Search</a></li>
+                  <li><a class="dropdown-item" onclick="php_update()">Update</a></li>
+                  <li><a class="dropdown-item" onclick="saveChanges()">Save</a></li>
+                  <li><a class="dropdown-item" onclick="clearForm()">New Review</a></li>
+                </ul>
               </li>
             </ul>
           </div>
@@ -240,7 +253,7 @@
               </button>
 
               <button type="button" class="btn btn-outline-danger" data-bs-toggle="tooltip"
-              data-bs-title="Delete the review" id="f-delete-btn" name="f-delete-btn" onclick="php_delete()">
+              data-bs-title="Delete the review" id="f-delete-btn" name="f-delete-btn" onclick="modalWarning('Are you sure you want to permanently delete this review?')">
                 <i class="bi bi-trash-fill" id="f-delete-btn-icon" name="f-delete-btn-icon"></i>
                 Delete
               </button>
@@ -266,7 +279,7 @@
             </button>
             
             <button type="button" class="btn btn-outline-secondary" 
-            data-bs-title="Write a new review" id="f-add-review-btn" name="f-add-review-btn" data-bs-toggle="tooltip" onclick="modalSuccess('Review found successfully')">
+            data-bs-title="Write a new review" id="f-add-review-btn" name="f-add-review-btn" data-bs-toggle="tooltip" onclick="clearForm()">
               <i class="bi bi-plus-square-fill" id="f-add-review-btn-icon" name="f-add-review-btn-icon"></i>  
               New
             </button>
@@ -306,12 +319,6 @@
       </ul>
     </footer>
 
-
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-      Launch static backdrop modal
-    </button> -->
-
         <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" name="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
 
@@ -329,7 +336,7 @@
 
           <div class="modal-footer" name="modal--footer-container"id="modal--footer-container">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="modal--footer-close-btn" name="modal--footer-close-btn">Close</button>
-            <button type="button" class="btn btn-primary" id="modal--footer-confirm-btn" name="modal--footer-confirm-btn">Confirm</button>
+            <button type="button" class="btn btn-primary" id="modal--footer-confirm-btn" name="modal--footer-confirm-btn" onclick="php_delete()">Confirm</button>
           </div>
 
         </div>
