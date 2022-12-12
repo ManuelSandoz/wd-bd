@@ -35,7 +35,7 @@ function saveChanges() {
   } catch (e) {
     modalError('There was an error saving the data. \n Please try again')
   }
-}
+};
 
 // This function will use regex to validate the email input
 function validateEmail() {
@@ -43,12 +43,10 @@ function validateEmail() {
   var email = document.getElementById('f-email');
 
   if (!regex.test(email.value)) {
-    // modalError('Please enter a valid email address');
-
     return false;
   }
   return true;
-}
+};
 
 // Function validates that the name and lastname inputs are filled
 function validateFullName() {
@@ -56,30 +54,24 @@ function validateFullName() {
   var lastName = document.getElementById('f-last-name');
 
   if(name.value === '') {
-    // modalError('Please enter a valid name and try agian')
-
     return false;
   }
 
   if(lastName.value === '') {
-    // modalError('Please enter a valid last name and try again')
-
     return false;
   }
   return true;
-}
+};
 
 // Function that validates if a drink has been selected
 function validateDrink() {
   var selectedDrink = document.querySelector('select option:checked');
 
   if(selectedDrink.value === '') {
-    // modalError('Please choose a drink to review and try again')
-
     return false;
   }
   return true;
-}
+};
 
 // Validate if a drink size has been chosen
 function validateDrinkSize() {
@@ -94,35 +86,29 @@ function validateDrinkSize() {
 
   // If there are no checked elements activate the alert
   if (!flag) {
-    // modalError('Please select a drink size and try again')
-
     return false;
   }
   return true;
-}
+};
 
 // Validates if there is text in the review text area
 function validateReview() {
   var reviewText = document.getElementById('f-review');
 
   if (reviewText.value === '') {
-    // modalError('Plase enter your review and try again');
-
     return false;
   }
   return true;
-}
+};
 
 // Validate if the term and conditions are checked
 function validateAgreement() {
   var agreement = document.getElementById('f-legal-agree');
   if(!agreement.checked){
-    // modalError('You must agree to the terms and conditions in order to continue');
-
     return false;
   }
   return true;
-}
+};
 
 // This function will validate through the inputs on the form
 function validateForm() {
@@ -166,12 +152,12 @@ function validateForm() {
 
   modalError('Make sure the information provided is correct and try again')
   return false;
-}
+};
 
 function php_insert() {
   // First validate the form
   // If there is valid data proceed to create FormData object
-  if (validateForm()) {
+  if(validateForm()) {
     let reviewData = new FormData();
 
     let drinkSize;
@@ -219,9 +205,9 @@ function php_insert() {
 
   } 
   else { 
-    modalError('Error saving the data on the server'); // <--- This message is overriding the one on validation
+    modalError('Error saving the data on the server. \nMake sure all information is correct and try agian.');
   }
-}
+};
 
 function php_update() {
 
@@ -272,9 +258,9 @@ function php_update() {
     packet.send(reviewData);
   }
   else {
-    modalError('There was a problem updating the review data')
+    modalError('There was a problem updating the review data. \nMake sure all information is correct and try agian.')
   }
-}
+};
 
 function php_delete() {
   if (validateFullName()) {
@@ -305,9 +291,9 @@ function php_delete() {
 
   } 
   else {
-    modalError('Error deleting the data');
+    modalError('Error deleting the data. \nMake sure the name and last name match an existing review.');
   }
-}
+};
 
 function php_select() {
   if (validateFullName()) {
@@ -370,22 +356,14 @@ function php_select() {
     packet.send(reviewData);
   }
   else {
-    modalError('Error selecting the data');
+    modalError('Error selecting the data. \nMake sure the name and last name match an existing review.');
   }
-}
+};
 
 function clearForm () {
   document.getElementById('coffee-review').reset();
   document.getElementById('f-review-img').srcset = '';
-}
-
-// Javascrip for the focus modal
-// const myModal = document.getElementById('myModal')
-// const myInput = document.getElementById('myInput')
-
-// myModal.addEventListener('shown.bs.modal', () => {
-//   myInput.focus()
-// })
+};
 
 function modalSuccess (message) {
   document.getElementById('staticBackdropLabel').innerHTML = "Success!";
@@ -397,7 +375,7 @@ function modalSuccess (message) {
   $('#modal--header').removeClass('bg-warning gradient');
   $('#modal--header').addClass('text-white');
   $('#modal--header').css('background-color', '#A8BDB2');
-}
+};
 
 function modalWarning (message) {
   document.getElementById('staticBackdropLabel').innerHTML = "Warning!";
@@ -408,7 +386,7 @@ function modalWarning (message) {
   $('#modal--footer-container').show();
   $('#modal--header').removeClass('bg-danger gradient');
   $('#modal--header').addClass('bg-warning gradient text-white');
-}
+};
 
 function modalError(message) {
   document.getElementById('staticBackdropLabel').innerHTML = "Error!";
@@ -419,7 +397,4 @@ function modalError(message) {
   $('#modal--footer-container').hide();
   $('#modal--header').removeClass('bg-warning gradient');
   $('#modal--header').addClass('bg-danger gradient text-white')
-}
-
-// TODO
-// 3. Replace all alerts with custom messages
+};
